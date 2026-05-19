@@ -330,6 +330,9 @@ jobs:
             ;;
           Next)
             SUSFS_VERSION="2.0.0"
+            if [[ "${{ inputs.android_version }}" == "android12" && "${{ inputs.kernel_version }}" == "5.10" ]]; then
+              sed -i 's/vm_flags_clear(new_vma, VM_PAD_MASK);/new_vma->vm_flags \&= ~VM_PAD_MASK;/' "$KERNEL_ROOT/common/mm/mmap.c"
+            fi
             ;;
           KSU)
             SUSFS_VERSION="2.0.0"
