@@ -5,6 +5,7 @@ permissions:
   actions: write # Allows triggering actions
 
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       ksu_variant:
